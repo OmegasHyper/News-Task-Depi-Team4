@@ -54,7 +54,6 @@ function fetchNewsArticles(category, page = 1) {
         success: function(result) {
             console.log(`${category} articles:`, result);
             
-            // Create articles HTML
             for(var a = 0; a < result.articles.length; a++) {
                 var article = `
                 <div class="col-md-4 mb-4">
@@ -72,7 +71,6 @@ function fetchNewsArticles(category, page = 1) {
                 $(`#${category}-show`).append(article);
             }
             
-            // Update page counter for next request
             switch(category) {
                 case 'sports':
                     sportsPage = page + 1;
@@ -85,16 +83,10 @@ function fetchNewsArticles(category, page = 1) {
                     break;
             }
         },
-        error: function(xhr, status, error) {
-            console.error(`Error fetching ${category} news:`, error);
-            if (page > 1 && showMoreBtn.length) {
-                showMoreBtn.find('.btn-text').text('Error - Try Again');
-            }
-        },
+        
         complete: function() {
             loadingStates[category] = false;
             
-            // Reset button state
             if (page > 1 && showMoreBtn.length) {
                 showMoreBtn.find('.btn-text').text('Show More News');
                 showMoreBtn.find('.btn-spinner').addClass('d-none');
@@ -104,7 +96,6 @@ function fetchNewsArticles(category, page = 1) {
     });
 }
 
-// Show more functions for each category
 function showMoreSports() {
     fetchNewsArticles('sports', sportsPage);
 }
@@ -117,14 +108,11 @@ function showMoreEntertainment() {
     fetchNewsArticles('entertainment', entertainmentPage);
 }
 
-// Initialize on page load
 $(document).ready(function() {
-    // Initial load for all categories
     fetchNewsArticles('sports', 1);
     fetchNewsArticles('technology', 1);
     fetchNewsArticles('entertainment', 1);
     
-    // Existing smooth scrolling code
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -138,7 +126,6 @@ $(document).ready(function() {
         });
     });
 
-    // Existing image loading code
     document.querySelectorAll('.card-img-top').forEach(img => {
         img.addEventListener('load', function() {
             this.style.opacity = '0';
