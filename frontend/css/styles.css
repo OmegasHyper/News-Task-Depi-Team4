@@ -286,3 +286,61 @@
         max-width: 300px;
     }
 }
+.match-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin: 15px auto;
+  max-width: 100%;
+  overflow: hidden;
+}
+.match-card-body {
+  padding: 15px;
+}
+.match-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.team-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.team-home {
+  flex-direction: row-reverse;
+  transform: translateX(20px);
+}
+.team-logo {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+.team-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+.match-score {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.match-info {
+  font-size: 13px;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.live-badge {
+  background: red;
+  color: #fff;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 8px;
+}
