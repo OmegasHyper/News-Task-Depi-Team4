@@ -3,6 +3,7 @@ import fetch from "node-fetch";
 import cors from "cors";
 
 const app = express();
+const port = process.env.PORT || 3000;
 app.use(cors());
 
 var sportsApiKey = '799b803f182d4aea6263113ec7753349199c9307e608accb9303748d1327c5cf';
@@ -26,7 +27,7 @@ app.get("/fixtures", async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log("✅ Server running on http://localhost:5000"));
+app.listen(port, () => console.log("✅ Server running on http://localhost:5000"));
 
 
 function getDate(date, days){
