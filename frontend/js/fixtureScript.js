@@ -3,7 +3,7 @@ var fetchedData = [];
 $.ajax({
     type: 'get',
     dataType: 'json',
-    url: "https://news-task-depi-team4.up.railway.app/fixtures",
+    url: "http://localhost:5000/fixtures",
     success: function (data){
         console.log(data);
         // var flag = false
@@ -125,7 +125,7 @@ document.getElementById("ex-input").addEventListener("input", function(event){
         $("#finishedMatchesCards").empty();
         $("#liveMatchesCards").empty();
         $("#futureMatchesCards").empty();
-
+        
         for(var i = fetchedData.length - 1; i >= 0; i--){
             var place;
             var status, isShown, score;
