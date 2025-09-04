@@ -27,7 +27,7 @@ app.get("/fixtures", async (req, res) => {
   }
 });
 
-app.listen(port, () => console.log("✅ Server running on http://localhost:5000"));
+app.listen(port, () => console.log(`✅ Server running on http://localhost:${port}`));
 
 
 function getDate(date, days){
@@ -35,3 +35,4 @@ function getDate(date, days){
     result.setDate(result.getDate() + days)
     return result;
 }
+
