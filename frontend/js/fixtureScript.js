@@ -67,7 +67,10 @@ document.getElementById("ex-input").addEventListener("input", function(event){
     const query = document.getElementById("ex-input").value.trim().toLowerCase();
     
     if(query) {
-        $("#matchesCards").empty();
+        $("#finishedMatchesCards").empty();
+        $("#liveMatchesCards").empty();
+        $("#futureMatchesCards").empty();
+
         for(var i = fetchedData.length - 1; i >= 0; i--){
             if(query == fetchedData[i].event_home_team.toLowerCase() || query == fetchedData[i].event_away_team.toLowerCase()
             || fetchedData[i].event_home_team.toLowerCase().includes(query) || fetchedData[i].event_away_team.toLowerCase().includes(query)){
@@ -119,7 +122,10 @@ document.getElementById("ex-input").addEventListener("input", function(event){
             }
         }
     }else{
-        $("#matchesCards").empty();
+        $("#finishedMatchesCards").empty();
+        $("#liveMatchesCards").empty();
+        $("#futureMatchesCards").empty();
+        
         for(var i = fetchedData.length - 1; i >= 0; i--){
             var place;
             var status, isShown, score;
