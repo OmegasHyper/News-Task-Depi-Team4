@@ -3,7 +3,10 @@ var fetchedData = [];
 $.ajax({
     type: 'get',
     dataType: 'json',
-    url: "http://localhost:5000/fixtures",
+    url: "https://b48f2c7ebd8e.ngrok-free.app/fixtures",
+    headers: {
+        'ngrok-skip-browser-warning': "true"
+    },
     success: function (data){
         console.log(data);
         // var flag = false
@@ -57,8 +60,9 @@ $.ajax({
             }
         }
     },
-    error: function (data) {
-        console.log("error fetching data")
+    error: function (xhr, status, error) {
+        console.error("❌ AJAX error:", status, error);
+        console.log("Response text:", xhr.responseText);
     }
 })
 
