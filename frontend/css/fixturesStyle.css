@@ -1,6 +1,5 @@
 body{
-    background-color: antiquewhite;
-    background-image: linear-gradient(135deg, #084cb8, #6911bb);
+    background-image: linear-gradient(135deg, #022b6b, #3b036e);
 }
 
 .matchCard{
@@ -36,6 +35,10 @@ main {
 main hr {
     margin-left: 1%;
     margin-top: 0;
-    border: solid 1px rgba(0, 0, 0, 0.918);
+    border: solid 1px rgba(255, 255, 255, 0.959);
     border-radius: 50%;
+}
+
+main > h2 {
+    color: white;
 }

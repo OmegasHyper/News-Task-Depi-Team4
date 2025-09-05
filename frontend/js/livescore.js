@@ -2,7 +2,7 @@ $.ajax({
     url: "https://v3.football.api-sports.io/fixtures?live=all",
     method: "GET",
     headers: {
-        "x-apisports-key": "61adf11bca8cc7778289d824733558e0"
+        "x-apisports-key": "f529c6493e351c10587c21a20765547c"
     },
     success: function(data) {
         console.log(data);

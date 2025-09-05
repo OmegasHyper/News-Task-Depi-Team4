@@ -385,7 +385,7 @@
   transition: background 0.2s ease-in-out;
 }
 .card-team-2-row:hover {
-  background-color: #f9fafb; 
+  background-color: #d1d1d1; 
 }
 
 .ct2-rank {
@@ -424,5 +424,5 @@
 
 .ct2-points {
   font-weight: bold;
-  color: #059669;
+  color: #11eca7;
 }
