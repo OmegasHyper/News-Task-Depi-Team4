@@ -22,6 +22,7 @@
     });
 
 var newsApiKey = '0f192b1e277a6f4bc0718c5913aee831';
+var newsApiKey_2 = '54552b8357e593f5ee934e9fee2a3914';
 var newsLanguage = 'en';
 
 var sportsPage = 1;
@@ -38,7 +39,7 @@ function fetchNewsArticles(category, page = 1) {
     if (loadingStates[category]) return;
     
     loadingStates[category] = true;
-    var newsApiUrl = `https://gnews.io/api/v4/top-headlines?category=${category}&apikey=${newsApiKey}&lang=${newsLanguage}&page=${page}`;
+    var newsApiUrl = `https://gnews.io/api/v4/top-headlines?category=${category}&apikey=${newsApiKey_2}&lang=${newsLanguage}&page=${page}`;
     
     const showMoreBtn = $(`#show-more-${category}-btn`);
     if (page > 1 && showMoreBtn.length) {
