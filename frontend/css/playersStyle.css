@@ -1,0 +1,30 @@
+.pCard{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.252);
+    font-size: larger;
+}
+
+.nameBox{
+    background-color: rgba(240, 255, 255, 0.308);
+}
+
+.nameBox p{
+    margin: 0;
+}
+
+.lastCont{
+    text-align: center;
+}
+
+.lastCont img{
+    width: 20%;
+}
+
+.firstCont img{
+    width: 25%;
+}

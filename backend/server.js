@@ -7,11 +7,13 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 
 var sportsApiKey = '799b803f182d4aea6263113ec7753349199c9307e608accb9303748d1327c5cf';
-// var hazemApiKey = '1b1fba82423389f20d0c45c85a1d23ac6edf7bb911501ea8fe4cac0aaaec43d7';
+var sportsApiKey_2 = '4de606d27d5501f4ff85224c59beeb45d96423d51809614697ce59fb3e708119';
+var sportsApiKey_3 = 'e2440f74faf67b127c6212a91f8d2c6cfafca9ea7fe82937cfd87e3bcb9808f7';
 var leagueId = '152'; //premier league id
 var today = new Date();
-var start = getDate(today, -4).toISOString().split("T")[0];
+var start = getDate(today, -10).toISOString().split("T")[0];
 var end = getDate(today, 10).toISOString().split("T")[0];
+
 
 console.log(start);
 console.log(end);
@@ -39,15 +41,15 @@ app.get("/standings", async (req, res) => {
   }
 });
 
-app.get("/players", async (req, res) => {
-  const url = `https://apiv2.allsportsapi.com/football?met=Players&leagueID=${leagueId}&APIkey=${sportsApiKey}`;
+app.get("/teams", async (req, res) => {
+  const url = `https://apiv2.allsportsapi.com/football/?&met=Teams&leagueId=${leagueId}&APIkey=${sportsApiKey}`;
   try {
     const response = await fetch(url);
     const data = await response.json();
     res.json(data);
   } catch (err) {
-    res.status(500).json({ error: "Failed to fetch players data" });
-  }
+    res.status(500).json({ error: "Failed to fetch teams data" });
+  } 
 });
 
 app.listen(port, "0.0.0.0", () => console.log(`✅ Server running on http://localhost:${port}`));
