@@ -21,7 +21,7 @@
       });
     });
 
-var newsApiKey = '7247f82f72b7c2167be7715195c7a657';
+var newsApiKey = '0f192b1e277a6f4bc0718c5913aee831';
 var newsLanguage = 'en';
 
 var sportsPage = 1;
