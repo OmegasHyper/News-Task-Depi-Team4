@@ -1,15 +1,27 @@
 const exchangeRates = {
-    USD: 1.0000,
-    EUR: 0.8069,
-    GBP: 0.7192,
-    JPY: 147.69,
-    CAD: 1.2600,
-    AUD: 0.6522,
-    CHF: 0.9331,
-    SAR: 3.7500,
-    AED: 3.6730,
-    EGP: 49.20
+    USD: 0,
+    EUR: 0,
+    GBP: 0,
+    JPY: 0,
+    CAD: 0,
+    AUD: 0,
+    CHF: 0,
+    SAR: 0,
+    AED: 0,
+    EGP: 0
 };
+$.ajax({
+    type: 'get',
+    dataType: 'json',
+    url: "https://api.currencyapi.com/v3/latest?apikey=cur_live_hAfCu8ry0SOWNuJCP47gM2EnVzGMDhrUn9hzy3d8",
+    success: function (data){
+            for (let currency in exchangeRates) {
+                if (data.data[currency]) {
+                    exchangeRates[currency] = data.data[currency].value;
+                }
+            }
+    }
+});
 
 function updateToOptions() {
     const fromCurrency = document.getElementById('from-convert').value;
@@ -39,7 +51,7 @@ function updateToOptions() {
 document.getElementById('from-convert').addEventListener('change', updateToOptions);
 
 
-document.getElementById('convert').addEventListener('click', function() {
+function calc(){
     const inputAmount = document.getElementById('inp').value;
     
     if (isFinite(inputAmount) && inputAmount > 0) {
@@ -50,7 +62,12 @@ document.getElementById('convert').addEventListener('click', function() {
         
         document.getElementById('result').value = result.toFixed(2);
     }
+}
+document.getElementById('convert').addEventListener('click', function() {
+    calc();
 });
+document.getElementById('from-convert').addEventListener('change', calc);
+
 
 window.onload=()=>{
     document.getElementById('inp').value='';
