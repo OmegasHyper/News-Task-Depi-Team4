@@ -1,4 +1,4 @@
-.pCard{
+/* .pCard{
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -7,7 +7,7 @@
     border-radius: 10px;
     box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.252);
     font-size: larger;
-}
+} */
 
 .nameBox{
     background-color: rgba(240, 255, 255, 0.308);
@@ -17,14 +17,75 @@
     margin: 0;
 }
 
-.lastCont{
+/* .lastCont{
     text-align: center;
-}
+} */
 
 .lastCont img{
-    width: 20%;
+    width: 30%;
+    margin-right: 10px;
 }
 
-.firstCont img{
+/* .firstCont img{
     width: 25%;
+} */
+
+.pCard {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.Simg img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  object-fit: cover;
+  margin: 10px auto;
+  display: block;
+  padding: 2px;
+}
+
+.club-name {
+  font-size: 20px;
+  color: #000000;
+  margin-bottom: 5px;
+  justify-self: center;
+}
+
+.nameBox p{
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+  text-align: center;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #444;
+}
+
+.stats div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+
+.stats div p {
+  font-size: 25px;
+  margin-top: 18%;
 }

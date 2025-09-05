@@ -13,11 +13,11 @@ $.ajax({
             for(let k=0; k < data.result[i].players.length; k++){
                 var card = `
                 <div class="mx-2 my-2 col-sm-12 col-md-6 col-lg-3 pCard" style="background-image: url('imgs/zztexture.jpg');">
-                    <div class="ms-3 firstCont">
+                    <div class="firstCont Simg">
                         <img src="${data.result[i].team_logo}" class="mt-2">
-                        <p>${data.result[i].team_name}</p>
+                        <p class="club-name">${data.result[i].team_name}</p>
                     </div>
-                    <div class="mb-2 d-flex justify-content-center">
+                    <div class="mb-2 d-flex justify-content-center Simg">
                         <img src="${data.result[i].players[k].player_image}"
                              onerror="this.src='${avatar}'; this.onerror=null;"
                              style="width:150px; height:150px; object-fit:cover;">
@@ -25,7 +25,7 @@ $.ajax({
                     <div class="mb-1 d-flex justify-content-center align-items-center nameBox">
                         <p>${data.result[i].players[k].player_name}</p>
                     </div>
-                    <div class="row">
+                    <div class="row stats">
                         <div class="col me-1 lastCont">
                             <img src="imgs/football.png">
                             <p>${data.result[i].players[k].player_goals ? data.result[i].players[k].player_goals : "0"}</p>
