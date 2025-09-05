@@ -1,64 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matches</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/search.css">
-    <link rel="stylesheet" href="css/fixturesStyle.css">    
+    <link rel="stylesheet" href="css/fixturesStyle.css"> 
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5693cc;">
-        <a class="navbar-brand ms-3" href="#">Premier League Scores</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            <!-- <ul class="navbar-nav me-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-            </ul> -->
-            
-            <!-- <form class="d-flex justify-content-center align-content-center my-2 my-lg-0 me-3">
-                <input class="form-control me-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  style="border-color:#fff; color:#fff;" 
-                onMouseOver="this.style.background='#fff';this.style.color='#77A4CE'" 
-                onMouseOut="this.style.background='#77A4CE';this.style.color='#fff'">Search by Team</button>
-            </form> -->
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-newspaper me-2"></i>MyNews
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarNav" aria-controls="navbarNav" 
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="fas fa-home me-1"></i>Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">
+              <i class="fas fa-futbol me-1"></i>Matches
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Standings.html">
+              <i class="fas fa-trophy me-1"></i>League Table
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="players.html">
+              <i class="fas fa-chart-bar me-1"></i>Statistics
+            </a>
+          </li>
+          <li>
+              <form id="ex-search" class="form-inline me-3">
+                  <input type="search" placeholder="Search by Team" id="ex-input" class="my-1">
+                  <button id="ex-submit" type="submit">
+                      <i class="fa fa-search my-1 mx-1"></i>
+                  </button>
+              </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-            <form id="ex-search" class="form-inline me-3">
-                <input type="search" placeholder="Search by Team" id="ex-input" class="my-1">
-                <button id="ex-submit" type="submit">
-                    <i class="fa fa-search my-1 mx-1"><img src="imgs/mag-purple-removebg-preview.png" id="search-img"></i>
-                </button>
-            </form>
-        </div>
-    </nav>
 
-    <!-- <h1 class="display-5 my-4">Premier League</h1>
-    <hr> -->
-
-    <main class="container">
+   <main class="container">
         <h2 class=" my-3">Previous Matches</h2>
         <hr style="width: 17%;">
         <div id="finishedMatchesCards" class="container mx-auto"></div>
@@ -71,11 +76,49 @@
         <hr style="width: 21%;">
         <div id="futureMatchesCards" class="container mx-auto"></div>
     </main>
-    
-    
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light mt-5 py-4">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <h5 class="mb-3">
+            <i class="fas fa-newspaper me-2"></i>MyNews
+          </h5>
+          <p class="mb-0">Your trusted source for breaking news, sports updates, and comprehensive coverage.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <h6 class="mb-3">Follow Us</h6>
+          <a href="#" class="text-light me-3">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-light me-3">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-light me-3">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="text-light">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+      <hr class="my-3" style="opacity: 0.3;">
+      <div class="text-center">
+        <small>&copy; 2025 MyNews. All rights reserved.</small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="js/fixtureScript.js"></script>
     <script src="js/search.js"></script>
+
 </body>
 </html>
