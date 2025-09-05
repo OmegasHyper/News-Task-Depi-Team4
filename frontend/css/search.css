@@ -56,7 +56,6 @@
 
 #ex-search:hover{
     width: 300px;
-    cursor: pointer;
 }
 
 #ex-search:hover #ex-input{

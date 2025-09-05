@@ -66,6 +66,8 @@ $.ajax({
     }
 })
 
+var submitBtn = document.getElementById("ex-submit").disabled = true;
+
 document.getElementById("ex-input").addEventListener("input", function(event){
     event.preventDefault();
     const query = document.getElementById("ex-input").value.trim().toLowerCase();
