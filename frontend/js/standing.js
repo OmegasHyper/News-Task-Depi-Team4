@@ -1,7 +1,7 @@
 $.ajax({
     type: 'get',
     dataType: 'json',
-    url: "https://8c3e5dd90f13.ngrok-free.app/standings",
+    url: "https://9ce92d752bee.ngrok-free.app/standings",
     headers: {
         'ngrok-skip-browser-warning': "true"
     },
