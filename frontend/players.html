@@ -113,30 +113,57 @@
       </div>
     </div>
 
-    <!-- Search and Filter Section -->
-    <div class="row mb-4" id="searchSection" style="display: none;">
-      <div class="col-md-8 mx-auto">
+    <!-- Search and Filter Section - All Inline -->
+<div class="row mb-4" id="searchSection" style="display: none;">
+    <div class="col-12">
         <div class="card" style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-8">
-                <div class="position-relative">
-                  <input type="text" id="playerSearch" class="form-control" placeholder="Search players by name..." 
-                         style="border: 2px solid rgba(102, 126, 234, 0.3); border-radius: 15px; padding: 0.75rem 1rem; font-size: 1rem; background: rgba(255, 255, 255, 0.9);">
-                  <i class="fas fa-search position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%); color: #667eea;"></i>
+            <div class="card-body">
+                <div class="d-flex flex-wrap align-items-center gap-3">
+                    
+                    <!-- Search Input -->
+                    <div class="flex-grow-1" style="min-width: 250px;">
+                        <div class="position-relative">
+                            <input type="text" id="playerSearch" class="form-control" placeholder="Search players by name..."
+                                style="border: 2px solid rgba(102, 126, 234, 0.3); border-radius: 15px; padding: 0.75rem 1rem; font-size: 1rem; background: rgba(255, 255, 255, 0.9);">
+                            <i class="fas fa-search position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%); color: #667eea;"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Filter -->
+                    <div style="min-width: 150px;">
+                        <select id="teamFilter" class="form-select"
+                            style="border: 2px solid rgba(102, 126, 234, 0.3); border-radius: 15px; padding: 0.75rem 1rem; font-size: 1rem; background: rgba(255, 255, 255, 0.9);">
+                            <option value="">All Teams</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Sort Section -->
+                    <div class="d-flex align-items-center gap-2" style="min-width: 200px;">
+                        <p class="mb-0 text-nowrap" style="color: rgb(0, 0, 0);">
+                            Sort by:
+                        </p>
+                        <select id="sort" class="form-select" style="border: 2px solid rgba(102, 126, 234, 0.3); border-radius: 15px; padding: 0.5rem 1rem; background: rgba(255, 255, 255, 0.9);">
+                            <option value="featured">Featured</option>
+                            <option value="goals">Goals</option>
+                            <option value="yellow-cards">Yellow Cards</option>
+                            <option value="red-cards">Red Cards</option>
+                            <option value="name">Name A-Z</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Clear Button (Optional) -->
+                    <div>
+                        <button class="btn btn-outline-primary" type="button" id="clearSearch" 
+                            style="border-radius: 15px; padding: 0.75rem 1.5rem; border: 2px solid rgba(102, 126, 234, 0.3);">
+                            <i class="fas fa-times me-1"></i>Clear
+                        </button>
+                    </div>
+                    
                 </div>
-              </div>
-              <div class="col-md-4">
-                <select id="teamFilter" class="form-select" 
-                        style="border: 2px solid rgba(102, 126, 234, 0.3); border-radius: 15px; padding: 0.75rem 1rem; font-size: 1rem; background: rgba(255, 255, 255, 0.9);">
-                  <option value="">All Teams</option>
-                </select>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
+</div>
 
     <!-- Player Cards Container -->
     <div class="playerCards row justify-content-center" id="playerCardsContainer">
