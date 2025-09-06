@@ -32,6 +32,7 @@ function initializeEventListeners() {
     $("#clearSearch").on("click", function() {
         $("#playerSearch").val('');
         $("#teamFilter").val('');
+        $('#sort').val('featured');
         filterPlayers();
     });
 
