@@ -1,8 +1,8 @@
   :root {
       --primary-color: #667eea;
       --secondary-color: #764ba2;
+      --secondary-color-hover: #653b8f;
       --accent-color: #4facfe;
-      /* --accent-color: #f59e0b; */
       --text-dark: #1f2937;
       --text-light: #6b7280;
       --border-light: #e5e7eb;
@@ -23,7 +23,6 @@
       background-color: var(--bg-light);
     }
 
-    /* Navbar Styling */
     .navbar {
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
       box-shadow: 0 2px 20px rgba(30, 58, 138, 0.1);
@@ -53,7 +52,6 @@
       transform: translateY(-1px);
     }
 
-    /* Section Headers */
     .section-header {
       font-family: 'Poppins', sans-serif !important;
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
@@ -78,7 +76,6 @@
       background: var(--secondary-color);
     }
 
-    /* Card Styling */
     .news-card {
       border: none;
       border-radius: 12px;
@@ -135,7 +132,44 @@
       box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     }
 
-    /* Sidebar Cards */
+    .btn-more {
+      border: 3px solid transparent;
+      background: 
+        radial-gradient(circle at 10% 80%, rgba(77, 76, 148, 0.5) 0%, transparent 30%),
+        radial-gradient(circle at 80% 40%, rgba(255, 119, 198, 0.5) 0%, transparent 30%),
+        radial-gradient(circle at 40% 70%, rgba(120, 200, 255, 0.5) 0%, transparent 30%), 
+        var(--secondary-color);
+      transition: all 0.5s;
+      position: relative;
+      box-sizing: border-box;
+      color: white;
+    }
+
+    .btn-more::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      background: white;
+      border-radius: inherit;
+      z-index: -2;
+    }
+
+    .btn-more:hover {
+      background: white;
+      color: black;
+    }
+
+    .btn-more:hover::before {
+      background: 
+        radial-gradient(circle at 10% 80%, rgba(77, 76, 148, 0.5) 0%, transparent 30%),
+        radial-gradient(circle at 80% 40%, rgba(255, 119, 198, 0.5) 0%, transparent 30%),
+        radial-gradient(circle at 40% 70%, rgba(120, 200, 255, 0.5) 0%, transparent 30%), 
+        var(--secondary-color);
+    }
+
     .sidebar-card {
       width: 350px;
       border: none;
@@ -157,7 +191,6 @@
       padding: 1.25rem;
     }
 
-    /* Weather Card Special Styling */
     .weather-card {
       background-color: var(--primary-color);
       color: white;
@@ -195,7 +228,6 @@
       margin-bottom: 0;
     }
 
-    /* Exchange Rates Styling */
     .exchange-item {
       display: flex;
       justify-content: space-between;
@@ -218,7 +250,6 @@
       color: var(--text-dark);
     }
 
-    /* Live Matches Styling */
     .match-item {
       padding: 0.75rem;
       margin-bottom: 0.5rem;
@@ -233,7 +264,6 @@
       font-weight: 600;
     }
 
-    /* Live indicator */
     .live-badge {
       background: #ef4444;
       color: white;
@@ -250,7 +280,6 @@
       100% { opacity: 1; }
     }
 
-    /* Responsive adjustments */
     @media (max-width: 768px) {
       .container {
         padding: 0 15px;
@@ -263,9 +292,18 @@
       .section-header {
         font-size: 1.3rem;
       }
+      #show-more-btn {
+        width: 100%;
+        max-width: 300px;
+      }
     }
 
-    /* Scrollbar styling */
+    @media (max-width: 350px) {
+      .sidebar-card{
+        width: 100%
+      }
+    }
+
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -299,12 +337,6 @@
     height: 100%;
 }
 
-@media (max-width: 768px) {
-    #show-more-btn {
-        width: 100%;
-        max-width: 300px;
-    }
-}
 .match-card {
   background: #fff;
   border-radius: 12px;

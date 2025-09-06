@@ -30,6 +30,7 @@ function initializeEventListeners() {
     });
 
     $("#clearSearch").on("click", function() {
+        $('#sort').val('featured')
         $("#playerSearch").val('');
         $("#teamFilter").val('');
         filterPlayers();

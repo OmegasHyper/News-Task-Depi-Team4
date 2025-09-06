@@ -1,5 +1,3 @@
-/* Enhanced Professional Fixtures Stylesheet */
-
 :root {
   --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
@@ -43,7 +41,6 @@ body::before {
   z-index: -1;
 }
 
-/* Enhanced Navbar */
 .navbar {
   background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(20px);
@@ -80,7 +77,6 @@ body::before {
   box-shadow: var(--shadow-light);
 }
 
-/* Search Box Enhancement */
 #ex-search {
   position: relative;
   margin-left: 1rem;
@@ -127,7 +123,6 @@ body::before {
   box-shadow: var(--shadow-light);
 }
 
-/* Main Content */
 main {
   padding: 2rem 0 !important;
   position: relative;
@@ -158,7 +153,6 @@ main hr {
   margin-top: 0 !important;
 }
 
-/* Live Indicator */
 .live {
   width: 12px !important;
   height: 12px !important;
@@ -194,7 +188,6 @@ main hr {
   }
 }
 
-/* Enhanced Match Cards */
 .matchCard {
   background: rgba(255, 255, 255, 0.95) !important;
   backdrop-filter: blur(20px);
@@ -229,7 +222,6 @@ main hr {
   opacity: 1;
 }
 
-/* Card Header Styling */
 .matchCard > div:first-child {
   padding: 1.5rem !important;
   background: rgba(102, 126, 234, 0.05) !important;
@@ -260,19 +252,16 @@ main hr {
   border: 1px solid rgba(34, 197, 94, 0.2) !important;
 }
 
-/* Live status styling */
 .matchCard > div:first-child p:last-child.visible {
   background: rgba(34, 197, 94, 0.1) !important;
   color: #16a34a !important;
   border: 1px solid rgba(34, 197, 94, 0.2) !important;
 }
 
-/* Card Body Enhancement */
 .matchCard .row {
   padding: 2rem 1.5rem !important;
 }
 
-/* Team Section Styling */
 .matchCard .col-4 {
   display: flex;
   flex-direction: column;
@@ -300,7 +289,6 @@ main hr {
   line-height: 1.2 !important;
 }
 
-/* Score Section Styling */
 .matchCard .col-3 {
   display: flex;
   flex-direction: column;
@@ -318,7 +306,6 @@ main hr {
   margin: 0 !important;
 }
 
-/* VS Display */
 .matchCard .h2:contains("VS") {
   font-weight: 600 !important;
   font-size: 1.5rem !important;
@@ -326,7 +313,6 @@ main hr {
   opacity: 0.7;
 }
 
-/* Empty State Styling */
 .empty-state {
   text-align: center;
   padding: 3rem 2rem;
@@ -351,7 +337,7 @@ main hr {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* Loading State */
+
 .loading {
   display: flex;
   justify-content: center;
@@ -376,7 +362,6 @@ main hr {
   100% { transform: rotate(360deg); }
 }
 
-/* Footer Enhancement */
 footer {
   background: rgba(26, 29, 41, 0.95) !important;
   backdrop-filter: blur(20px);
@@ -409,7 +394,6 @@ footer a:hover {
   color: white !important;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   main h2 {
     font-size: 1.5rem !important;
@@ -460,7 +444,6 @@ footer a:hover {
   }
 }
 
-/* Additional Animations */
 .matchCard {
   opacity: 0;
   transform: translateY(30px);
@@ -480,7 +463,6 @@ footer a:hover {
   }
 }
 
-/* Invisible class override */
 .invisible {
   visibility: hidden !important;
 }
