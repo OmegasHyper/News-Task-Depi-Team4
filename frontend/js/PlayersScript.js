@@ -1,23 +1,18 @@
-// Enhanced Player Statistics JavaScript
 var avatar = "imgs/football-player.png";
 var allPlayersData = [];
 var allTeamsData = [];
 
-// Statistics counters
 var totalPlayers = 0;
 var totalGoals = 0;
 var totalYellowCards = 0;
 var totalRedCards = 0;
 
-// Initialize page
 $(document).ready(function() {
     initializeEventListeners();
     loadPlayerData();
 });
 
-// Event listeners setup
 function initializeEventListeners() {
-    // Search functionality with debouncing
     let searchTimeout;
     $("#playerSearch").on("input", function() {
         clearTimeout(searchTimeout);
@@ -26,12 +21,20 @@ function initializeEventListeners() {
         }, 300);
     });
 
-    // Team filter
     $("#teamFilter").on("change", function() {
         filterPlayers();
     });
 
-    // Keyboard shortcuts
+    $("#sort").on("change", function() {
+        sortPlayers(this.value);
+    });
+
+    $("#clearSearch").on("click", function() {
+        $("#playerSearch").val('');
+        $("#teamFilter").val('');
+        filterPlayers();
+    });
+
     $(document).on("keydown", function(e) {
         if (e.ctrlKey && e.key === '/') {
             e.preventDefault();
@@ -44,7 +47,78 @@ function initializeEventListeners() {
     });
 }
 
-// Enhanced AJAX call with better error handling
+function searchPlayers(searchTerm) {
+    if (!searchTerm || searchTerm.trim() === '') {
+        return allPlayersData;
+    }
+
+    const term = searchTerm.toLowerCase().trim();
+    
+    return allPlayersData.filter(player => {
+        const nameMatch = player.player_name.toLowerCase().includes(term);
+        
+        const teamMatch = player.team_name.toLowerCase().includes(term);
+        
+        const goalsMatch = (player.player_goals || '0').toString().includes(term);
+        const yellowMatch = (player.player_yellow_cards || '0').toString().includes(term);
+        const redMatch = (player.player_red_cards || '0').toString().includes(term);
+        
+        return nameMatch || teamMatch || goalsMatch || yellowMatch || redMatch;
+    });
+}
+
+const sortFields = {
+    "featured": null,
+    "goals": "player_goals",
+    "yellow-cards": "player_yellow_cards",
+    "red-cards": "player_red_cards",
+    "name": "player_name"
+};
+
+function sortPlayers(sortBy) {
+    let sortedPlayers = [...allPlayersData];
+    const field = sortFields[sortBy];
+    
+    if (field === "player_name") {
+        sortedPlayers.sort((a, b) => {
+            const nameA = (a[field] || '').toLowerCase();
+            const nameB = (b[field] || '').toLowerCase();
+            return nameA.localeCompare(nameB);
+        });
+    } else if (field) {
+        sortedPlayers.sort((a, b) => {
+            const valueA = parseInt(a[field] || 0);
+            const valueB = parseInt(b[field] || 0);
+            return valueB - valueA;
+        });
+    }
+    
+    const searchTerm = $("#playerSearch").val();
+    const selectedTeam = $("#teamFilter").val();
+    
+    if (searchTerm || selectedTeam) {
+        sortedPlayers = applyFilters(sortedPlayers, searchTerm, selectedTeam);
+    }
+    
+    displayPlayers(sortedPlayers);
+}
+
+function applyFilters(players, searchTerm, selectedTeam) {
+    let filteredPlayers = players;
+    
+    if (searchTerm && searchTerm.trim() !== '') {
+        filteredPlayers = searchPlayers(players, searchTerm);
+    }
+    
+    if (selectedTeam && selectedTeam !== '') {
+        filteredPlayers = filteredPlayers.filter(player => 
+            player.team_name === selectedTeam
+        );
+    }
+    
+    return filteredPlayers;
+}
+
 function loadPlayerData() {
     $.ajax({
         type: 'GET',
@@ -67,26 +141,23 @@ function loadPlayerData() {
             console.log("Response text:", xhr.responseText);
             showErrorState();
         },
-        timeout: 15000 // 15 second timeout
+        timeout: 15000
     });
 }
 
-// Process and store player data
 function processPlayerData(teamsData) {
     allTeamsData = teamsData;
     allPlayersData = [];
     
-    // Reset counters
     totalPlayers = 0;
     totalGoals = 0;
     totalYellowCards = 0;
     totalRedCards = 0;
 
-    // Process each team
     teamsData.forEach(team => {
         if (team.players && team.players.length > 0) {
             team.players.forEach(player => {
-                // Add team info to player object
+               
                 const playerWithTeam = {
                     ...player,
                     team_name: team.team_name,
@@ -96,7 +167,6 @@ function processPlayerData(teamsData) {
                 
                 allPlayersData.push(playerWithTeam);
                 
-                // Update counters
                 totalPlayers++;
                 totalGoals += parseInt(player.player_goals || 0);
                 totalYellowCards += parseInt(player.player_yellow_cards || 0);
@@ -105,17 +175,13 @@ function processPlayerData(teamsData) {
         }
     });
 
-    // Populate team filter
     populateTeamFilter();
     
-    // Update statistics overview
     updateStatsOverview();
     
-    // Display all players initially
     displayPlayers(allPlayersData);
 }
 
-// Populate team filter dropdown
 function populateTeamFilter() {
     const teamSelect = $("#teamFilter");
     teamSelect.empty().append('<option value="">All Teams</option>');
@@ -125,7 +191,6 @@ function populateTeamFilter() {
     });
 }
 
-// Update statistics overview cards with animations
 function updateStatsOverview() {
     animateCounter("#totalPlayers", totalPlayers);
     animateCounter("#totalGoals", totalGoals);
@@ -133,7 +198,6 @@ function updateStatsOverview() {
     animateCounter("#totalRed", totalRedCards);
 }
 
-// Animate counter numbers
 function animateCounter(selector, targetValue) {
     const element = $(selector);
     const startValue = 0;
@@ -151,31 +215,26 @@ function animateCounter(selector, targetValue) {
     }, 16);
 }
 
-// Enhanced player filtering
 function filterPlayers() {
     const searchTerm = $("#playerSearch").val().toLowerCase().trim();
     const selectedTeam = $("#teamFilter").val();
     
     let filteredPlayers = allPlayersData;
     
-    // Filter by search term
     if (searchTerm) {
-        filteredPlayers = filteredPlayers.filter(player => 
-            player.player_name.toLowerCase().includes(searchTerm)
-        );
+        filteredPlayers = searchPlayers(filteredPlayers, searchTerm);
     }
     
-    // Filter by team
     if (selectedTeam) {
         filteredPlayers = filteredPlayers.filter(player => 
             player.team_name === selectedTeam
         );
     }
     
-    // Display filtered results
     displayPlayers(filteredPlayers);
     
-    // Show/hide no results state
+    updateSearchResultsCount(filteredPlayers.length);
+    
     if (filteredPlayers.length === 0) {
         showNoResults();
     } else {
@@ -183,7 +242,62 @@ function filterPlayers() {
     }
 }
 
-// Display players with enhanced cards
+function updateSearchResultsCount(count) {
+    const searchTerm = $("#playerSearch").val().trim();
+    const selectedTeam = $("#teamFilter").val();
+    
+    let resultText = "";
+    
+    if (searchTerm || selectedTeam) {
+        resultText = `Found ${count} player${count !== 1 ? 's' : ''}`;
+        if (searchTerm) {
+            resultText += ` matching "${searchTerm}"`;
+        }
+        if (selectedTeam) {
+            resultText += ` in ${selectedTeam}`;
+        }
+    } else {
+        resultText = `Showing all ${count} players`;
+    }
+    
+    $("#searchResults").text(resultText);
+}
+
+function searchPlayers(players, searchTerm) {
+    if (!searchTerm || searchTerm.trim() === '') {
+        return players;
+    }
+
+    const term = searchTerm.toLowerCase().trim();
+    
+    return players.filter(player => {
+        const nameMatch = player.player_name.toLowerCase().includes(term);
+        
+        const teamMatch = player.team_name.toLowerCase().includes(term);
+        
+        const goals = player.player_goals || 0;
+        const yellowCards = player.player_yellow_cards || 0;
+        const redCards = player.player_red_cards || 0;
+        
+        const goalsMatch = goals.toString().includes(term);
+        const yellowMatch = yellowCards.toString().includes(term);
+        const redMatch = redCards.toString().includes(term);
+        
+        let rangeMatch = false;
+        if (term.includes('-') && term.includes('goal')) {
+            const rangeRegex = /(\d+)-(\d+)\s*goal/;
+            const match = term.match(rangeRegex);
+            if (match) {
+                const min = parseInt(match[1]);
+                const max = parseInt(match[2]);
+                rangeMatch = goals >= min && goals <= max;
+            }
+        }
+        
+        return nameMatch || teamMatch || goalsMatch || yellowMatch || redMatch || rangeMatch;
+    });
+}
+
 function displayPlayers(players) {
     const container = $("#playerCardsContainer");
     container.empty();
@@ -200,13 +314,11 @@ function displayPlayers(players) {
         container.append(card);
     });
     
-    // Add stagger animation
     setTimeout(() => {
         addStaggerAnimation();
     }, 100);
 }
 
-// Create enhanced player card
 function createPlayerCard(player, index) {
     const goals = player.player_goals || 0;
     const yellowCards = player.player_yellow_cards || 0;
@@ -214,7 +326,7 @@ function createPlayerCard(player, index) {
     
     return `
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 mb-4">
-            <div class="pCard h-100" style="animation-delay: ${index * 0.1}s;">
+            <div class="pCard h-100" style="animation-delay: ${index * 0.1}s;" data-player-name="${player.player_name.toLowerCase()}" data-team-name="${player.team_name.toLowerCase()}">
                 <!-- Team Header -->
                 <div class="firstCont">
                     <img src="${player.team_logo}" 
@@ -257,7 +369,6 @@ function createPlayerCard(player, index) {
     `;
 }
 
-// Enhanced stagger animation
 function addStaggerAnimation() {
     $('.pCard').each(function(index) {
         $(this).css({
@@ -266,7 +377,6 @@ function addStaggerAnimation() {
     });
 }
 
-// Loading state management
 function showLoadingState() {
     $("#loadingState").show();
     $("#statsOverview").hide();
@@ -289,7 +399,6 @@ function showContent() {
     }, 400);
 }
 
-// Error state management
 function showErrorState() {
     hideLoadingState();
     const errorHtml = `
@@ -307,7 +416,6 @@ function showErrorState() {
     $("#playerCardsContainer").html(errorHtml);
 }
 
-// No results state management
 function showNoResults() {
     $("#noResults").fadeIn(300);
 }
@@ -316,7 +424,6 @@ function hideNoResults() {
     $("#noResults").hide();
 }
 
-// Enhanced scroll effects
 $(window).on('scroll', function() {
     const navbar = $('.navbar');
     const scrollTop = $(window).scrollTop();
@@ -334,7 +441,6 @@ $(window).on('scroll', function() {
     }
 });
 
-// Intersection Observer for card animations
 function observeCardAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -352,18 +458,15 @@ function observeCardAnimations() {
     });
 }
 
-// Utility functions
 function formatPlayerName(name) {
     return name.length > 20 ? name.substring(0, 20) + '...' : name;
 }
 
 function getPlayerRating(goals, yellowCards, redCards) {
-    // Simple rating calculation
     let rating = goals * 2 - yellowCards * 0.5 - redCards * 2;
     return Math.max(0, Math.min(10, rating)).toFixed(1);
 }
 
-// Enhanced card interactions
 $(document).on('mouseenter', '.pCard', function() {
     $(this).find('.stats .col').addClass('stats-hover');
 });
@@ -372,7 +475,6 @@ $(document).on('mouseleave', '.pCard', function() {
     $(this).find('.stats .col').removeClass('stats-hover');
 });
 
-// Keyboard navigation
 $(document).on('keydown', function(e) {
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
         const cards = $('.pCard:visible');
@@ -393,7 +495,6 @@ $(document).on('keydown', function(e) {
     }
 });
 
-// Performance monitoring
 function logPerformanceMetrics() {
     if ('performance' in window) {
         const navigation = performance.getEntriesByType('navigation')[0];
@@ -405,15 +506,15 @@ function logPerformanceMetrics() {
     }
 }
 
-// Initialize performance monitoring
 $(window).on('load', function() {
     setTimeout(logPerformanceMetrics, 1000);
 });
 
-// Export functions for external use
 window.PlayerStats = {
     loadData: loadPlayerData,
     filterPlayers: filterPlayers,
+    searchPlayers: searchPlayers,
+    sortPlayers: sortPlayers,
     refreshData: function() {
         allPlayersData = [];
         loadPlayerData();
