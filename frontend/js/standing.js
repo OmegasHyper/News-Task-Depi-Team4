@@ -1,7 +1,7 @@
 $.ajax({
     type: 'get',
     dataType: 'json',
-    url: "https://d405dcfeb42a.ngrok-free.app/standings",
+    url: "https://news-task-depi-team4-production.up.railway.app/standings",
     headers: {
         'ngrok-skip-browser-warning': "true"
     },

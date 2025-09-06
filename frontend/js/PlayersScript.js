@@ -125,7 +125,7 @@ function loadPlayerData() {
     $.ajax({
         type: 'GET',
         dataType: 'json',
-        url: 'https://d405dcfeb42a.ngrok-free.app/teams',
+        url: 'https://news-task-depi-team4-production.up.railway.app/teams',
         headers: {
             'ngrok-skip-browser-warning': "true"
         },

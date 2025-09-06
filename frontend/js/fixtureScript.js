@@ -3,7 +3,7 @@ var fetchedData = [];
 $.ajax({
     type: 'get',
     dataType: 'json',
-    url: "https://d405dcfeb42a.ngrok-free.app/fixtures",
+    url: "https://news-task-depi-team4-production.up.railway.app/fixtures",
     headers: {
         'ngrok-skip-browser-warning': "true"
     },
