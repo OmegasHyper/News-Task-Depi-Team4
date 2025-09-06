@@ -45,17 +45,17 @@
     width: 40px;
     height: 40px;
     position: absolute;
-    top: 2%;
-    right: 1%;
+    /* top: 2%;
+    right: 1%; */
     border-radius: 50%;
-    color: #8c52ff;
+    color: white;
     text-align: center;
     font-size: 1.2em;
     transition: all 0.3s ease;
 }
 
 #ex-search:hover{
-    width: 300px;
+    width: 250px;
 }
 
 #ex-search:hover #ex-input{
@@ -65,6 +65,6 @@
 }
 
 #ex-search:hover .fa{
-    background: #8c52ff;
-    color: white;
+    background: white;
+    color: #8c52ff;
 }

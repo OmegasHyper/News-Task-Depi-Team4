@@ -3,7 +3,7 @@ var avatar = "imgs/football-player.png"
 $.ajax({
     type: 'get',
     dataType: 'json',
-    url: 'https://9ce92d752bee.ngrok-free.app/teams',
+    url: 'https://d405dcfeb42a.ngrok-free.app/teams',
     headers: {
         'ngrok-skip-browser-warning': "true"
     },
