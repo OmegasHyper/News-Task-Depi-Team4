@@ -13,7 +13,7 @@ const exchangeRates = {
 $.ajax({
     type: 'get',
     dataType: 'json',
-    url: "https://api.currencyapi.com/v3/latest?apikey=cur_live_hAfCu8ry0SOWNuJCP47gM2EnVzGMDhrUn9hzy3d8",
+    url: "https://api.currencyapi.com/v3/latest?apikey=cur_live_qTT2SuUIKqWaj4cPF9FSs96ohYV0n5sGgTGaebSx",
     success: function (data){
             for (let currency in exchangeRates) {
                 if (data.data[currency]) {
